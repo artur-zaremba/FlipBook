@@ -68,5 +68,11 @@ extension View {
         UIGraphicsEndImageContext()
         return rasterizedView
     }
+    
+    func custom_makeViewSnapshot() -> Image? {
+      return UIGraphicsImageRenderer(size: bounds.size).image { _ in
+        drawHierarchy(in: CGRect(origin: .zero, size: bounds.size), afterScreenUpdates: true)
+      }
+    }
 }
 #endif
